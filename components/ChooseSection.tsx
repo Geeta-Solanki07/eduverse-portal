@@ -26,7 +26,7 @@ export default function ChooseSection() {
 
         {/* Academic Card */}
         <Link
-          href="/academy"
+          href=""
           className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white rounded-2xl p-10 flex flex-col items-center hover:scale-105 transition-transform"
         >
           <Image src="/ra3.png" alt="Academic Icon" width={50} height={50} />

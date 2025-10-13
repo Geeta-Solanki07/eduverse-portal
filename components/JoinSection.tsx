@@ -1,42 +1,50 @@
+"use client";
 import Image from "next/image";
 
 export default function JoinSection() {
   return (
-    <section className="bg-blue-50 relative py-16 px-6 overflow-hidden text-black">
-      <div className="max-w-5xl mx-auto">
-        <h3 className="text-2xl md:text-3xl font-bold mb-6">
-          Join 50 Thousands Students on the App today!
+    <section className="bg-blue-50 relative py-24 px-6 overflow-hidden text-black">
+      <div className="max-w-6xl mx-auto text-center md:text-left">
+        <h3 className="text-3xl md:text-4xl font-extrabold mb-8">
+          Join 50,000+ Students on the App Today!
         </h3>
 
-        <ul className="text-gray-700 space-y-2 mb-6">
-          <li>✔ Live & Recorded classes available at ease</li>
-          <li>✔ Dashboards for Progress Tracking</li>
-          <li>✔ Thousands of Practice Questions</li>
+        <ul className="text-gray-700 space-y-4 mb-8 text-left md:inline-block">
+          <li className="flex items-center gap-2">
+            <span className="text-orange-500 text-xl">✔</span> Live & Recorded classes available at ease
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-orange-500 text-xl">✔</span> Dashboards for Progress Tracking
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-orange-500 text-xl">✔</span> Thousands of Practice Questions
+          </li>
         </ul>
 
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex gap-6 flex-wrap justify-center md:justify-start">
           <Image
             src="/ra4.svg"
             alt="Google Play"
-            width={150}
-            height={50}
+            width={180}
+            height={60}
           />
           <Image
             src="/ra5.png"
             alt="App Store"
-            width={150}
-            height={50}
+            width={180}
+            height={60}
           />
         </div>
       </div>
 
+      {/* Phone Mockup */}
       <div className="absolute right-6 top-10 hidden md:block">
         <Image
           src="/ra6.png"
           alt="Phone App"
-          width={300}
-          height={400}
-        //   className="drop-shadow-xl"
+          width={350}
+          height={450}
+          className="drop-shadow-2xl"
         />
       </div>
     </section>

@@ -1,0 +1,27 @@
+import HeroSection from "@/components/it-professions/HeroSection";
+import FeaturesSection from "@/components/it-professions/FeaturesSection";
+import CoursesSection from "@/components/it-professions/CoursesSection";
+import CTASection from "@/components/it-professions/CTASection";
+import AboutSection from "@/components/it-professions/AboutSection";
+import TestimonialsSection from "@/components/it-professions/TestimonialsSection";
+import EbookSection from "@/components/it-professions/EbookSection";
+
+export const metadata = {
+  title: "IT Professions - Dousoft Eduverse",
+  description:
+    "Explore our IT Professions courses and kickstart your career in technology with Dousoft Eduverse.",
+};
+
+export default function ITProfessionsPage() {
+  return (
+    <div className="bg-white">
+      <HeroSection />
+      {/* <FeaturesSection />
+      <CoursesSection />
+      <CTASection />
+      <AboutSection />
+      <TestimonialsSection />
+      <EbookSection /> */}
+    </div>
+  );
+}
