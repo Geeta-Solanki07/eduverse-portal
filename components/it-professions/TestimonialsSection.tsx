@@ -23,7 +23,7 @@ export default function TestimonialsSection() {
         {testimonials.map((t) => (
           <div key={t.name} className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
             <Image src={t.img} alt={t.name} width={100} height={100} className="rounded-full mb-4" />
-            <p className="text-gray-700 mb-4">"{t.comment}"</p>
+            <p className="text-gray-700 mb-4">{t.comment}</p>
             <h3 className="text-xl font-semibold">{t.name}</h3>
             <span className="text-gray-500">{t.role}</span>
           </div>
