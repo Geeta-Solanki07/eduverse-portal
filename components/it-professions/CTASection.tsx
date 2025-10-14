@@ -11,8 +11,8 @@ export default function CTASection() {
         <p className="text-xl font-bold">+01 523 456 789</p>
       </div>
 
-      <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center">
-        <span className="text-orange-500 font-bold text-2xl">Or</span>
+      <div className="absolute left-1/2 top-20 transform -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center">
+        <span className="text-orange-500  font-bold text-2xl">Or</span>
       </div>
     </section>
   );

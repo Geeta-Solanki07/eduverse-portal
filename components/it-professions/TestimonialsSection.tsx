@@ -1,33 +1,113 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import quoteImg from "../../public/assets/it/quotes.svg";
+import testiImg from "../../public/assets/it/testi.png";
+
+interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  text: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Aarav Sharma",
+    title: "Bank Manager (S.B.I)",
+    text: "The course was outstanding! I gained practical skills and confidence to apply in real scenarios. Highly recommended!",
+  },
+  {
+    id: 2,
+    name: "Aarti Sharma",
+    title: "Housewife",
+    text: "I never thought online learning could be this effective. The trainers are supportive and the content is top-notch.",
+  },
+  {
+    id: 3,
+    name: "Rahul Verma",
+    title: "Software Engineer",
+    text: "Excellent training platform! Clear explanations, real-world examples, and continuous support throughout the program.",
+  },
+];
 
 export default function TestimonialsSection() {
-  const testimonials = [
-    {
-      name: "Anjali Sharma",
-      role: "Full Stack Developer",
-      comment: "Dousoft Eduverse ke courses ne meri skills next level pe le jaayi. AI aur React Native seekhne ka experience amazing tha!",
-      img: "/assets/it/girl.png",
-    },
-    {
-      name: "Rahul Verma",
-      role: "Software Engineer",
-      comment: "Highly practical aur project-based approach. Instructor guidance bhi bahut helpful thi.",
-      img: "/assets/it/boy2.png",
-    },
-  ];
+  const [current, setCurrent] = useState(0);
+
+  // Auto-slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const prevTestimonial = () =>
+    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+
+  const nextTestimonial = () =>
+    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
 
   return (
-    <section className="bg-blue-50 py-16 px-6">
-      <h2 className="text-3xl font-bold text-center mb-10">What Our Students Say</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {testimonials.map((t) => (
-          <div key={t.name} className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition">
-            <Image src={t.img} alt={t.name} width={100} height={100} className="rounded-full mb-4" />
-            <p className="text-gray-700 mb-4">{t.comment}</p>
-            <h3 className="text-xl font-semibold">{t.name}</h3>
-            <span className="text-gray-500">{t.role}</span>
+    <section className="relative py-20 bg-gradient-to-r from-orange-50 to-white">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-orange-600 mb-2">Testimonials</h2>
+        <p className="text-lg text-gray-700">What Our Students Have To Say</p>
+      </div>
+
+      <div className="relative max-w-4xl mx-auto">
+        {/* Testimonial Card */}
+        <div className="bg-white shadow-lg rounded-2xl p-10 transition-transform duration-500 transform hover:scale-105">
+          <div className="flex items-start gap-5">
+            <div className="flex-shrink-0">
+              <Image src={quoteImg} alt="Quote" width={50} height={50} />
+            </div>
+            <p className="text-gray-800 text-lg">{testimonials[current].text}</p>
           </div>
-        ))}
+
+          <div className="flex items-center gap-4 mt-6">
+            <Image
+              src={testiImg}
+              alt={testimonials[current].name}
+              width={60}
+              height={60}
+              className="rounded-full border-2 border-orange-400"
+            />
+            <div>
+              <p className="font-semibold text-orange-600">{testimonials[current].name}</p>
+              <p className="text-gray-500 text-sm">{testimonials[current].title}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevTestimonial}
+          className="absolute top-1/2 -translate-y-1/2 left-0 bg-orange-300 text-white p-3 rounded-full shadow hover:bg-orange-500 transition"
+        >
+          &#8592;
+        </button>
+        <button
+          onClick={nextTestimonial}
+          className="absolute top-1/2 -translate-y-1/2 right-0 bg-orange-300 text-white p-3 rounded-full shadow hover:bg-orange-500 transition"
+        >
+          &#8594;
+        </button>
+
+        {/* Dots Indicators */}
+        <div className="flex justify-center mt-6 gap-3">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`w-3 h-3 rounded-full transition ${
+                index === current ? "bg-orange-600" : "bg-orange-200"
+              }`}
+            ></button>
+          ))}
+        </div>
       </div>
     </section>
   );

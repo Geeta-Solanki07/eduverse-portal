@@ -5,6 +5,7 @@ import CTASection from "@/components/it-professions/CTASection";
 import AboutSection from "@/components/it-professions/AboutSection";
 import TestimonialsSection from "@/components/it-professions/TestimonialsSection";
 import EbookSection from "@/components/it-professions/EbookSection";
+import Footer from "@/components/it-professions/Footer";
 
 export const metadata = {
   title: "IT Professions - Dousoft Eduverse",
@@ -16,12 +17,13 @@ export default function ITProfessionsPage() {
   return (
     <div className="bg-white">
       <HeroSection />
-      {/* <FeaturesSection />
-      <CoursesSection />
+      <FeaturesSection />
       <CTASection />
       <AboutSection />
+       <CoursesSection />
       <TestimonialsSection />
-      <EbookSection /> */}
+      <EbookSection />
+      <Footer/>
     </div>
   );
 }
