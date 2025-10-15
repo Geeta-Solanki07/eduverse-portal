@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { Menu, X } from "lucide-react"; // Hamburger icons
 
 export default function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,18 +11,16 @@ export default function HeroSection() {
   return (
     <header className="relative bg-blue-100 overflow-hidden text-black">
       {/* Navigation */}
-      <nav className="flex justify-between items-center px-4 md:px-10 py-4 relative z-20">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={114}
-            height={40}
-          />
-        </Link>
+      <nav className="flex items-center justify-between px-4 md:px-10 py-4 relative z-20">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <Link href="/">
+            <Image src="/logo.png" alt="Logo" width={120} height={40} className="w-36 md:w-44" />
+          </Link>
+        </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 bg-white/60 px-6 py-2 rounded-2xl">
+        {/* Center Menu - Hidden on Mobile */}
+        <div className="hidden md:flex flex-1 justify-center items-center gap-6 px-6 py-2 rounded-2xl">
           {/* Mega Dropdown */}
           <div className="relative group">
             <button className="flex items-center gap-2 font-medium text-black">
@@ -39,7 +38,7 @@ export default function HeroSection() {
                 height={10}
               />
             </button>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:grid grid-cols-3 gap-6 bg-white shadow-lg rounded-xl p-6 w-[900px] z-50">
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 hidden group-hover:grid grid-cols-3 gap-6 bg-white shadow-lg rounded-xl p-6 w-[900px] z-50">
               {/* Beginner */}
               <div>
                 <h4 className="text-orange-500 border-b border-orange-500 mb-3 pb-1 font-semibold">
@@ -86,8 +85,10 @@ export default function HeroSection() {
           <Link href="/offline-course" className="text-black">Offline Courses</Link>
           <Link href="/study-materials" className="text-black">Study Materials</Link>
           <Link href="/support" className="text-black">Support</Link>
+        </div>
 
-          {/* Search */}
+        {/* Right Side - Search + Login */}
+        <div className="hidden md:flex items-center gap-4">
           <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
             <i className="fas fa-search text-gray-500"></i>
             <input
@@ -97,7 +98,6 @@ export default function HeroSection() {
             />
           </div>
 
-          {/* Login */}
           <Link href="/login" className="bg-orange-500 text-white px-4 py-2 rounded-lg">
             Login/Register
           </Link>
@@ -108,19 +108,19 @@ export default function HeroSection() {
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-2xl text-gray-700"
         >
-          <i className="fas fa-bars"></i>
+          {menuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
-
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white p-4 flex flex-col gap-3 md:hidden z-50 shadow-lg">
-            <Link href="/offline-course" className="py-2 border-b">Offline Courses</Link>
-            <Link href="/study-materials" className="py-2 border-b">Study Materials</Link>
-            <Link href="/support" className="py-2 border-b">Support</Link>
-            <Link href="/login" className="py-2 border-b bg-orange-500 text-white rounded-lg text-center">Login/Register</Link>
-          </div>
-        )}
       </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <nav className="md:hidden bg-white border-t border-gray-200 shadow-md py-4 px-6 flex flex-col gap-3 text-gray-800 font-medium text-lg z-50">
+          <Link href="/offline-course" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Offline Courses</Link>
+          <Link href="/study-materials" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Study Materials</Link>
+          <Link href="/support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Support</Link>
+          <Link href="/login" className="py-2 border-b bg-orange-500 text-white rounded-lg text-center" onClick={() => setMenuOpen(false)}>Login/Register</Link>
+        </nav>
+      )}
 
       {/* Hero Content */}
       <div className="relative text-center px-6 py-16 z-10">
@@ -159,11 +159,11 @@ export default function HeroSection() {
 
       {/* Hero Images - Hidden on Mobile */}
       <div className="hidden md:block absolute inset-0 pointer-events-none">
+        <Image src="/assets/it/Vector 4.png" alt="Shape" width={1200} height={200} className="absolute top-40 w-full" />
         <Image src="/assets/it/boy2.png" alt="Boy" width={250} height={250} className="absolute left-10 top-40 animate-float scale-x-[-1]" />
         <Image src="/assets/it/girl.png" alt="Girl" width={200} height={250} className="absolute right-40 top-30 animate-float" />
         <Image src="/assets/it/html.png" alt="HTML" width={80} height={80} className="absolute right-10 top-20 animate-float" />
         <Image src="/assets/it/python.png" alt="Python" width={90} height={90} className="absolute right-1/4 bottom-10 animate-float" />
-        <Image src="/assets/it/Vector 4.png" alt="Shape" width={1200} height={200} className="absolute top-40 w-full" />
       </div>
     </header>
   );

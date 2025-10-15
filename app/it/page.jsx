@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function ITProfessionsPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white font-poppins">
       <HeroSection />
       <FeaturesSection />
       <CTASection />

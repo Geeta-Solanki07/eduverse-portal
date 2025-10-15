@@ -4,35 +4,78 @@ import Link from "next/link";
 
 export default function ChooseSection() {
   return (
-    <section className="text-center py-16 px-4 bg-white text-black">
-      <h1 className="text-4xl md:text-5xl font-semibold mb-4">Choose Your Path</h1>
-      <h2 className="text-xl md:text-2xl font-light">
-        Explore{" "}
-        <span className="text-blue-600 font-semibold">IT Profession</span> Career Path or{" "}
-        <span className="text-orange-500 font-semibold">Academic Programs</span>.
-      </h2>
+    <section className="relative text-center py-24 px-6 bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden">
+      {/* Decorative blurred shapes */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl -z-10 animate-pulse" />
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl -z-10 animate-pulse" />
 
-      <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-5xl mx-auto">
-        {/* IT Card */}
+      {/* Section Heading */}
+      <div className="mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+          Choose Your <span className="text-blue-600">Path</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto">
+          Explore{" "}
+          <span className="text-blue-600 font-semibold">IT Profession</span>{" "}
+          Career Path or{" "}
+          <span className="text-orange-500 font-semibold">
+            Academic Programs
+          </span>
+          {/* designed for your future. */}
+        </p>
+      </div>
+
+      {/* Option Cards */}
+      <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        {/* IT Courses */}
         <Link
           href="/it"
-          className="bg-gradient-to-r from-blue-600 to-pink-500 text-white rounded-2xl p-10 flex flex-col items-center hover:scale-105 transition-transform"
+          className="group relative bg-gradient-to-br from-blue-600 v-500 to-pink-500 text-white rounded-3xl p-10 flex flex-col items-center shadow-2xl hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-500 hover:-translate-y-2"
         >
-          <Image src="/ra2.png" alt="IT Icon" width={50} height={50} />
-          <h5 className="text-xl font-bold mt-3">IT PROFESSION COURSES</h5>
-          <p className="text-sm mt-1">IT Focused career programs</p>
-          <button className="mt-3 bg-black px-5 py-2 rounded-full text-sm">Get Started →</button>
+          {/* Subtle glass overlay */}
+          <div className="absolute inset-0 bg-white/10 rounded-3xl backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          <Image
+            src="/ra2.png"
+            alt="IT Icon"
+            width={70}
+            height={70}
+            className="relative z-10 drop-shadow-lg"
+          />
+          <h5 className="relative z-10 text-2xl font-semibold mt-5">
+            IT PROFESSION COURSES
+          </h5>
+          <p className="relative z-10 text-base mt-2 text-blue-100 opacity-90">
+            Advance your tech career with hands-on skills
+          </p>
+          <button className="relative z-10 mt-6 bg-black/80 hover:bg-black px-7 py-2.5 rounded-full text-sm font-medium transition-all duration-300">
+            Get Started →
+          </button>
         </Link>
 
-        {/* Academic Card */}
+        {/* Academic Courses */}
         <Link
-          href=""
-          className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white rounded-2xl p-10 flex flex-col items-center hover:scale-105 transition-transform"
+          href="/academics"
+          className="group relative bg-gradient-to-br from-orange-500  to-yellow-400 text-white rounded-3xl p-10 flex flex-col items-center shadow-2xl hover:shadow-[0_0_25px_rgba(251,146,60,0.5)] transition-all duration-500 hover:-translate-y-2"
         >
-          <Image src="/ra3.png" alt="Academic Icon" width={50} height={50} />
-          <h5 className="text-xl font-bold mt-3">ACADEMIC COURSES</h5>
-          <p className="text-sm mt-1">Academic Focused Level Courses</p>
-          <button className="mt-3 bg-black px-5 py-2 rounded-full text-sm">Get Started →</button>
+          <div className="absolute inset-0 bg-white/10 rounded-3xl backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          <Image
+            src="/ra3.png"
+            alt="Academic Icon"
+            width={70}
+            height={70}
+            className="relative z-10 drop-shadow-lg"
+          />
+          <h5 className="relative z-10 text-2xl font-semibold mt-5">
+            ACADEMIC COURSES
+          </h5>
+          <p className="relative z-10 text-base mt-2 text-orange-100 opacity-90">
+            Explore academic excellence and success paths
+          </p>
+          <button className="relative z-10 mt-6 bg-black/80 hover:bg-black px-7 py-2.5 rounded-full text-sm font-medium transition-all duration-300">
+            Get Started →
+          </button>
         </Link>
       </div>
     </section>
