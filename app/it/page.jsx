@@ -9,18 +9,18 @@ import Footer from "@/components/it-professions/Footer";
 
 export const metadata = {
   title: "IT Professions - Dousoft Eduverse",
-  description:
-    "Explore our IT Professions courses and kickstart your career in technology with Dousoft Eduverse.",
+  description: "Explore IT courses and kickstart your career with Dousoft Eduverse.",
 };
 
 export default function ITProfessionsPage() {
   return (
     <div className="bg-white font-poppins">
+      
       <HeroSection />
       <FeaturesSection />
       <CTASection />
       <AboutSection />
-       <CoursesSection />
+      <CoursesSection />
       <TestimonialsSection />
       <EbookSection />
       <Footer/>

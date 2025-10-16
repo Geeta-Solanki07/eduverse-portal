@@ -15,7 +15,7 @@ export default function HeroSection() {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">
-            <Image src="/logo.png" alt="Logo" width={120} height={40} className="w-36 md:w-44" />
+            <Image src="/logo.png" alt="Logo" width={120} height={40} className="" />
           </Link>
         </div>
 
@@ -82,9 +82,8 @@ export default function HeroSection() {
           </div>
 
           {/* Other Nav Links */}
-          <Link href="/offline-course" className="text-black">Offline Courses</Link>
-          <Link href="/study-materials" className="text-black">Study Materials</Link>
-          <Link href="/support" className="text-black">Support</Link>
+          <Link href="/it/study-materials" className="text-black">Study Materials</Link>
+          <Link href="/it/support" className="text-black">Support</Link>
         </div>
 
         {/* Right Side - Search + Login */}
@@ -115,7 +114,6 @@ export default function HeroSection() {
       {/* Mobile Menu */}
       {menuOpen && (
         <nav className="md:hidden bg-white border-t border-gray-200 shadow-md py-4 px-6 flex flex-col gap-3 text-gray-800 font-medium text-lg z-50">
-          <Link href="/offline-course" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Offline Courses</Link>
           <Link href="/study-materials" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Study Materials</Link>
           <Link href="/support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Support</Link>
           <Link href="/login" className="py-2 border-b bg-orange-500 text-white rounded-lg text-center" onClick={() => setMenuOpen(false)}>Login/Register</Link>

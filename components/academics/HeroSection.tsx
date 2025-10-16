@@ -3,137 +3,160 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
+import { Menu, X, Search } from "lucide-react";
 
-export default function HeroSection() {
+const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="relative bg-blue-50 overflow-hidden text-black">
+    <header className="relative bg-green-50 overflow-hidden p-5">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-4 md:px-10 py-4 relative z-20">
-        {/* Logo */}
+      <nav className="flex justify-between items-center px-4 md:px-10 h-20 relative z-20">
         <Link href="/">
           <Image
             src="/logo.png"
             alt="Dousoft Eduverse Logo"
-            width={160}
-            height={50}
-            className="cursor-pointer"
+            width={120}
+            height={40}
+            className="object-contain"
           />
         </Link>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-gray-800 text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <FaTimes /> : <FaBars />}
+          {menuOpen ? <X /> : <Menu />}
         </button>
 
-        {/* Navbar Links */}
+        {/* Navigation Links */}
         <div
           className={`${
             menuOpen
-              ? "absolute top-16 left-0 bg-white w-full shadow-md p-6 flex flex-col gap-4"
-              : "hidden md:flex md:items-center md:gap-6"
-          }`}
+              ? "flex flex-col absolute top-20 left-0 w-full bg-white shadow-md p-4 space-y-4"
+              : "hidden"
+          } md:flex md:space-x-6 md:static md:flex-row md:bg-transparent md:shadow-none`}
         >
           {/* Courses Dropdown */}
-          <div className="relative group">
-            <button className="flex items-center gap-2 font-medium">
+          <div
+            className="relative"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <button className="flex items-center gap-2 text-gray-800 hover:text-orange-500">
               <Image
                 src="/assets/it/emojione-monotone_books.svg"
-                alt=""
+                alt="Books"
                 width={20}
                 height={20}
               />
               <span>Courses</span>
               <Image
                 src="/assets/it/Polygon 1.svg"
-                alt=""
+                alt="Arrow"
                 width={10}
                 height={10}
               />
             </button>
 
             {/* Mega Menu */}
-            <div className="absolute left-0 top-full hidden group-hover:grid grid-cols-3 gap-8 bg-white shadow-lg p-6 z-50 w-[600px]">
-              <div>
-                <h4 className="font-semibold mb-2">Elementary (1st-5th)</h4>
-                <ul className="space-y-1 text-sm">
-                  <li><Link href="/1st-class">1st Class</Link></li>
-                  <li><Link href="/2nd-class">2nd Class</Link></li>
-                  <li><Link href="/3rd-class">3rd Class</Link></li>
-                  <li><Link href="/4th-class">4th Class</Link></li>
-                  <li><Link href="/5th-class">5th Class</Link></li>
-                </ul>
+            {dropdownOpen && (
+              <div className="absolute left-0 top-full mt-3 w-[90vw] md:w-[900px] bg-white shadow-lg rounded-xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6 z-50">
+                <div>
+                  <h4 className="text-orange-500 border-b-2 border-orange-500 mb-3 pb-1 font-semibold">
+                    Elementary (1st-5th)
+                  </h4>
+                  <ul className="space-y-2 text-gray-700">
+                    {["1st", "2nd", "3rd", "4th", "5th"].map((num) => (
+                      <li key={num}>
+                        <Link href={`/${num.toLowerCase()}-class`}>
+                          {num} Class
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-orange-500 border-b-2 border-orange-500 mb-3 pb-1 font-semibold">
+                    Junior (6th-8th)
+                  </h4>
+                  <ul className="space-y-2 text-gray-700">
+                    {["6th", "7th", "8th"].map((num) => (
+                      <>
+                        <li key={`${num}-eng`}>
+                          <Link href={`/${num}-class-english`}>
+                            {num} Class - English
+                          </Link>
+                        </li>
+                        <li key={`${num}-hin`}>
+                          <Link href={`/${num}-class-hindi`}>
+                            {num} Class - Hindi
+                          </Link>
+                        </li>
+                      </>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-orange-500 border-b-2 border-orange-500 mb-3 pb-1 font-semibold">
+                    Senior (9th-12th)
+                  </h4>
+                  <ul className="space-y-2 text-gray-700">
+                    {["9th", "10th", "11th", "12th"].map((num) => (
+                      <li key={num}>
+                        <Link href={`/${num}-class`}>{num} Class</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2">Junior (6th-8th)</h4>
-                <ul className="space-y-1 text-sm">
-                  <li><Link href="/6th-class-english">6th Class - English</Link></li>
-                  <li><Link href="/6th-class-hindi">6th Class - Hindi</Link></li>
-                  <li><Link href="/7th-class-english">7th Class - English</Link></li>
-                  <li><Link href="/7th-class-hindi">7th Class - Hindi</Link></li>
-                  <li><Link href="/8th-class-english">8th Class - English</Link></li>
-                  <li><Link href="/8th-class-hindi">8th Class - Hindi</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Senior (9th-12th)</h4>
-                <ul className="space-y-1 text-sm">
-                  <li><Link href="/9th-class">9th Class</Link></li>
-                  <li><Link href="/10th-class">10th Class</Link></li>
-                  <li><Link href="/11th-class">11th Class</Link></li>
-                  <li><Link href="/12th-class">12th Class</Link></li>
-                </ul>
-              </div>
-            </div>
+            )}
           </div>
 
-          <Link href="/offline-courses" className="font-medium">
-            Offline Courses
-          </Link>
-          <Link href="/study-materials2" className="font-medium text-orange-500">
+          
+          <Link
+            href="/study-materials2"
+            className="text-gray-800 hover:text-orange-500 md:bg-orange-100 md:rounded-lg md:px-3 md:py-1"
+          >
             Study Materials
           </Link>
-          <Link href="/support" className="font-medium">
+          <Link href="/support" className="hover:text-orange-500 text-gray-800">
             Support
           </Link>
 
-          {/* Search and Login for Mobile */}
-          <div className="flex flex-col md:hidden gap-3">
-            <div className="flex items-center border border-gray-300 rounded-full px-3 py-1">
-              <FaSearch className="text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="ml-2 outline-none bg-transparent text-sm"
-              />
-            </div>
-            <Link
-              href="/login"
-              className="px-4 py-2 bg-orange-500 text-white rounded-full text-center font-medium hover:bg-orange-600 transition"
-            >
-              Login/Register
-            </Link>
-          </div>
-        </div>
-
-        {/* Desktop Right Section */}
-        <div className="hidden md:flex items-center gap-6">
-          <div className="flex items-center border border-gray-300 rounded-full px-3 py-1">
-            <FaSearch className="text-gray-400" />
+          {/* Search bar (mobile view) */}
+          <div className="flex items-center bg-gray-100 rounded-full px-3 py-2 md:hidden">
+            <Search className="text-gray-500" size={20} />
             <input
               type="text"
               placeholder="Search here..."
-              className="ml-2 outline-none bg-transparent"
+              className="bg-transparent border-none outline-none text-gray-700 ml-2 w-full"
+            />
+          </div>
+
+          <Link
+            href="/login"
+            className="bg-orange-500 text-white px-4 py-2 rounded-lg md:hidden text-center"
+          >
+            Login/Register
+          </Link>
+        </div>
+
+        {/* Right Section */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center bg-gray-100 rounded-full px-3 py-2 w-72">
+            <Search className="text-gray-500" size={20} />
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="bg-transparent border-none outline-none text-gray-700 ml-2 w-full"
             />
           </div>
           <Link
             href="/login"
-            className="px-5 py-2 bg-orange-500 text-white rounded-full font-medium hover:bg-orange-600 transition"
+            className="bg-orange-500 text-white px-4 py-2 rounded-lg"
           >
             Login/Register
           </Link>
@@ -141,85 +164,96 @@ export default function HeroSection() {
       </nav>
 
       {/* Hero Content */}
-      <div className="relative max-w-6xl mx-auto text-center md:text-left px-4 md:px-0 mt-16 md:mt-20">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-4">
+      <div className="text-center px-4 py-12 relative z-10">
+        <h1 className="text-3xl md:text-5xl font-semibold text-gray-800 mb-4">
           A Brighter Future For Kids
         </h1>
-        <p className="text-lg md:text-2xl text-gray-700 mb-8">
-          Let your child start learning how to excel in School Curriculum, Maths & English!
+        <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+          Let your child start learning how to excel in School Curriculum, Maths
+          & English!
         </p>
 
-        <div className="flex justify-center md:justify-start gap-10 mt-6">
-          <div className="flex flex-col items-center">
-            <Image
-              src="/assets/ac/classes.svg"
-              alt="Classes"
-              width={60}
-              height={60}
-            />
-            <span className="text-sm md:text-base mt-2 text-center">
+        <div className="max-w-md mx-auto flex items-center justify-between bg-white shadow-lg rounded-full px-5 py-3 mb-8">
+          <span className="text-sm text-gray-500 truncate">
+            Search By Course Name, Just Type To Get Hint...
+          </span>
+          <Search className="text-gray-500" />
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-8 mb-10">
+          <div className="flex items-center gap-4">
+            <div className="bg-white p-4 rounded-full shadow-md w-16 h-16 flex items-center justify-center">
+              <Image
+                src="/assets/it/Vector.svg"
+                alt="Classes Icon"
+                width={50}
+                height={50}
+              />
+            </div>
+            <div className="text-lg font-light text-gray-700">
               Classes <br /> 1st to 12th
-            </span>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <Image
-              src="/ac/image/instructor.svg"
-              alt="Instructors"
-              width={60}
-              height={60}
-            />
-            <span className="text-sm md:text-base mt-2 text-center">
+
+          <div className="flex items-center gap-4">
+            <div className="bg-white p-4 rounded-full shadow-md w-16 h-16 flex items-center justify-center">
+              <Image
+                src="/assets/it/Vector (1).svg"
+                alt="Instructors Icon"
+                width={50}
+                height={50}
+              />
+            </div>
+            <div className="text-lg font-light text-gray-700">
               200+ Top <br /> Instructors
-            </span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Hero Images */}
-      <div className="relative w-full h-[500px] mt-10 md:mt-0">
+      {/* Background Images */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden ">
+        {/* Girl and Boy hidden on mobile */}
         <Image
           src="/assets/ac/girl.png"
           alt="Girl"
-          width={320}
-          height={320}
-          className="absolute left-0 bottom-0"
+          width={200}
+          height={200}
+          className="absolute left-[5%] top-[35%] w-40 md:w-56 hidden md:block"
         />
         <Image
           src="/assets/ac/boy.png"
           alt="Boy"
-          width={320}
-          height={320}
-          className="absolute right-0 bottom-0"
+          width={250}
+          height={250}
+          className="absolute right-[5%] top-[30%] w-52 md:w-64 hidden md:block"
         />
-        <Image
-          src="/assets/ac/chemical.png"
-          alt="Chemical"
-          width={100}
-          height={100}
-          className="absolute left-1/3 top-10"
-        />
+
+        {/* Decorative Images */}
         <Image
           src="/assets/ac/book.png"
           alt="Book"
           width={100}
           height={100}
-          className="absolute right-1/4 top-20"
+          className="absolute left-[3%] top-[30%] opacity-10 md:opacity-100"
         />
         <Image
           src="/assets/ac/callendar.png"
           alt="Calendar"
-          width={80}
-          height={80}
-          className="absolute left-1/4 bottom-1/4"
+          width={60}
+          height={60}
+          className="absolute right-[3%] top-[20%] opacity-10 md:opacity-100"
         />
         <Image
           src="/assets/ac/abt-shape.png"
           alt="Shape"
-          width={150}
-          height={150}
-          className="absolute right-1/3 bottom-1/3"
+          width={1000}
+          height={400}
+          className="absolute bottom-0 left-0 w-full"
         />
       </div>
     </header>
   );
-}
+};
+
+export default HeroSection;
