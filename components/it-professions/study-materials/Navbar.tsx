@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className="relative bg-blue-100 text-black">
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-4 md:px-10 py-4 relative z-20">
+      <nav className="flex items-center justify-between px-4 md:px-10  relative z-20">
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/">

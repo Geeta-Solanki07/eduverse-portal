@@ -117,12 +117,12 @@ const HeroSection = () => {
 
           
           <Link
-            href="/study-materials2"
+            href="/academics/study-materials2"
             className="text-gray-800 hover:text-orange-500 md:bg-orange-100 md:rounded-lg md:px-3 md:py-1"
           >
             Study Materials
           </Link>
-          <Link href="/support" className="hover:text-orange-500 text-gray-800">
+          <Link href="/academics/support" className="hover:text-orange-500 text-gray-800">
             Support
           </Link>
 
