@@ -62,7 +62,7 @@ const SupportPage: React.FC = () => {
         <div className="max-w-3xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">How Can We Help You?</h1>
           <p className="text-lg text-black mb-8">
-            Find answers to your questions or contact our support team. We're here to assist you with any issues.
+            Find answers to your questions or contact our support team. We&apos;re here to assist you with any issues.
           </p>
           <div className="flex items-center justify-center gap-2 max-w-md mx-auto">
             <input
