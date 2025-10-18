@@ -83,7 +83,7 @@ export default function HeroSection() {
 
           {/* Other Nav Links */}
           <Link href="/it/study-materials" className="text-black">Study Materials</Link>
-          <Link href="/it/support" className="text-black">Support</Link>
+          <Link href="/Support" className="text-black">Support</Link>
         </div>
 
         {/* Right Side - Search + Login */}
@@ -115,7 +115,7 @@ export default function HeroSection() {
       {menuOpen && (
         <nav className="md:hidden bg-white border-t border-gray-200 shadow-md py-4 px-6 flex flex-col gap-3 text-gray-800 font-medium text-lg z-50">
           <Link href="/it/study-materials" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Study Materials</Link>
-          <Link href="/it/support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Support</Link>
+          <Link href="/Support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>Support</Link>
           <Link href="/login" className="py-2 border-b bg-orange-500 text-white rounded-lg text-center" onClick={() => setMenuOpen(false)}>Login/Register</Link>
         </nav>
       )}

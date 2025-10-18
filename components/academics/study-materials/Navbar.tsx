@@ -127,7 +127,7 @@ export default function Navbar() {
           Study Materials
         </Link>
         <Link
-          href="/academics/support"
+          href="/Support"
           className="hover:text-orange-500 text-gray-800"
         >
           Support

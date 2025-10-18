@@ -18,13 +18,12 @@ export default function MaterialCard({ item }: { item: Material }) {
   return (
     <div className="bg-white rounded-2xl shadow hover:shadow-lg transition-all overflow-hidden">
       {/* Image Section */}
-      <div className="relative">
+      <div className="relative w-full h-56">
         <Image
-          src={item.image}
+          src={item.image} // must start with "/"
           alt={item.title}
-          width={400}
-          height={250}
-          className="w-full h-56 object-cover"
+          fill
+          className="object-cover"
         />
         <div className="absolute top-3 left-3 bg-orange-500 text-white text-xs px-3 py-1 rounded-full">
           {item.type}
@@ -33,10 +32,8 @@ export default function MaterialCard({ item }: { item: Material }) {
 
       {/* Content Section */}
       <div className="p-5">
-        {/* Title */}
         <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
 
-        {/* Meta Info */}
         <div className="flex justify-between text-gray-500 text-sm mb-3">
           <span className="flex items-center gap-1">
             <FileText size={16} /> {item.pages}
@@ -46,12 +43,10 @@ export default function MaterialCard({ item }: { item: Material }) {
           </span>
         </div>
 
-        {/* Description */}
         <p className="text-gray-600 text-sm mb-4 line-clamp-3">
           {item.description}
         </p>
 
-        {/* Price & Action Button */}
         <div className="flex justify-between items-center">
           <div
             className={`font-semibold ${
@@ -60,9 +55,7 @@ export default function MaterialCard({ item }: { item: Material }) {
           >
             {item.price}
           </div>
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-white bg-orange-500 hover:bg-orange-600`}
-          >
+          <button className="flex items-center gap-2 px-4 py-2 rounded-md text-white bg-orange-500 hover:bg-orange-600">
             {item.price === "Free" ? (
               <>
                 <Download size={16} /> Download

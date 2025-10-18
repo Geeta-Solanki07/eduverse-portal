@@ -149,7 +149,7 @@ export default function Navbar() {
           <Link href="/it/study-materials" className="text-black">
             Study Materials
           </Link>
-          <Link href="/it/support" className="text-black">
+          <Link href="/Support" className="text-black">
             Support
           </Link>
         </div>
@@ -184,7 +184,7 @@ export default function Navbar() {
           <Link href="/it/study-materials" className="py-2 border-b" onClick={() => setMenuOpen(false)}>
             Study Materials
           </Link>
-          <Link href="/it/support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>
+          <Link href="/Support" className="py-2 border-b" onClick={() => setMenuOpen(false)}>
             Support
           </Link>
           <Link
