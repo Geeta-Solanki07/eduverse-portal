@@ -112,7 +112,7 @@ export default function LoginForm() {
 
         {/* Register link */}
         <p className="text-center text-gray-500 text-sm mt-4">
-          Don't have an account? <a href="#" className="text-indigo-500 font-medium">Sign up</a>
+          Don&apost have an account? <a href="#" className="text-indigo-500 font-medium">Sign up</a>
         </p>
       </form>
     </div>
